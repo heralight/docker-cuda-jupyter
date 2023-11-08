@@ -21,5 +21,8 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update -y
 RUN apt-get install sudo 
 RUN apt install python3.11 python3-pip -y
-RUN python3 -m pip install jupyterlab
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1
+RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
+RUN apt install python3-pip -y
+RUN python -m pip install jupyterlab
 CMD ["jupyter"]
