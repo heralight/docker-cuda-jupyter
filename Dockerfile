@@ -14,15 +14,20 @@ RUN apt-get update -y \
         libffi-dev \
         libsqlite3-dev \
         libbz2-dev \
+        git \
         wget \
+        curl \
+        openssh-server \
+        sudo \
     && export DEBIAN_FRONTEND=noninteractive
 RUN apt install software-properties-common -y
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get update -y
-RUN apt-get install sudo 
-RUN apt install python3.11 python3-pip -y
+RUN apt install python3.11 python3.11-dev python3.11-venv -y
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.11 1
 RUN update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
 RUN apt install python3-pip -y
+RUN pip3 install huggingface-hub
+RUN curl -fsSL https://tailscale.com/install.sh | sh
 RUN python -m pip install jupyterlab
 CMD ["jupyter"]
