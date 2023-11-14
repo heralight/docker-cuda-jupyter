@@ -31,4 +31,5 @@ RUN pip3 install huggingface-hub
 RUN curl -fsSL https://tailscale.com/install.sh | sh
 RUN python -m pip install jupyterlab
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash
+RUN sudo apt-get install git-lfs
 CMD ["jupyter"]
